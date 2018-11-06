@@ -1,8 +1,10 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+
 import java.util.List;
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 
@@ -12,6 +14,16 @@ public class Display {
 
     public Display(Pane pane) {
         displayPane = pane;
+        Button restartButton = new Button("Restart");
+        restartButton.setOnAction((event) -> {
+            System.out.println("Restart...");
+            clear();
+            Globals.getInstance().display = new Display(displayPane);
+            Globals.getInstance().stopGame();
+            Globals.getInstance().game.init();
+            Globals.getInstance().game.start();
+        });
+        displayPane.getChildren().add(restartButton);
     }
 
     public void add(GameEntity entity) {
