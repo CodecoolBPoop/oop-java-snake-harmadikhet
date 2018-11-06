@@ -26,6 +26,7 @@ public class Display {
             Globals.getInstance().stopGame();
             Globals.getInstance().game.init();
             Globals.getInstance().game.start();
+            Globals.getInstance().setGameScore(0);
         });
         displayPane.getChildren().add(restartButton);
     }
@@ -61,11 +62,17 @@ public class Display {
     public void gameOver() {
         clear();
         Text gameOverText = new Text();
+        Text gameScoreText = new Text();
         gameOverText.setText("Game Over!");
         gameOverText.setX(400);
         gameOverText.setY(300);
         gameOverText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        gameScoreText.setText("Score: " + Integer.toString(Globals.getInstance().getGameScore()));
+        gameScoreText.setX(400);
+        gameScoreText.setY(350);
+        gameScoreText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
         displayPane.getChildren().add(gameOverText);
+        displayPane.getChildren().add(gameScoreText);
         displayPane.getChildren().add(restartButton);
     }
 }

@@ -16,7 +16,15 @@ public class Globals {
 
     private GameLoop gameLoop;
     private Resources resources;
+    private int gameScore = 0;
 
+    public int getGameScore() {
+        return gameScore;
+    }
+
+    public void setGameScore(int gameScore) {
+        this.gameScore = gameScore;
+    }
 
     public static Globals getInstance() {
         if(instance == null) instance = new Globals();
