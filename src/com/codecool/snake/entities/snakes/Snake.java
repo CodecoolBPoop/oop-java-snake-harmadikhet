@@ -57,6 +57,9 @@ public class Snake implements Animatable {
         speed += numSpeed;
     }
 
+    public static void setSpeed(float speed) {
+        Snake.speed = speed;
+    }
 
     public void changeHealth(int diff) {
         health += diff;
