@@ -25,6 +25,7 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
+        Globals.getInstance().display.frameFinished();
         spawnEnemies(4);
         spawnPowerUps(4);
 

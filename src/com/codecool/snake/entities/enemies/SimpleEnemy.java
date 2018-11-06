@@ -21,7 +21,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         super(10);
 
         setImage(Globals.getInstance().getImage("SimpleEnemy"));
-        while (Globals.getInstance().display.getObjectList().get(0).getPosition() == this.getPosition() ) {
+        while (Globals.getInstance().display.getObjectList().get(0).getPosition() == this.getPosition()) {
             double posX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
             double posY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
             setX(posX);
