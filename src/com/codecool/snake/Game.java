@@ -1,14 +1,21 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.SpeedUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
+
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import sun.font.TrueTypeFont;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import  java.util.concurrent.TimeUnit;
 
 public class Game extends Pane {
     private Snake snake = null;
@@ -28,12 +35,15 @@ public class Game extends Pane {
         Globals.getInstance().display.frameFinished();
         spawnEnemies(4);
         spawnPowerUps(4);
+        spawnSpeedUps(1);
+
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
     }
+
 
     public void start() {
         setupInputHandling();
@@ -51,6 +61,14 @@ public class Game extends Pane {
     private void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
+
+    private void spawnSpeedUps(int numberOfSpeedUps) {
+        for(int i =0; i < numberOfSpeedUps; ++i) new SpeedUp();
+    }
+
+
+
+
 
     private void setupInputHandling() {
         Scene scene = getScene();
