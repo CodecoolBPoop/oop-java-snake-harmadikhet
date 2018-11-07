@@ -5,6 +5,7 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.SpeedDown;
 import com.codecool.snake.entities.powerups.SpeedUp;
 import com.codecool.snake.entities.snakes.Snake;
 
@@ -37,6 +38,7 @@ public class GameLoop {
             spawnSpeed();
             spawnSimple();
             spawnEnemy();
+            spawnSlow();
             Game.destroyHeart();
         }
 
@@ -76,6 +78,18 @@ public class GameLoop {
         }
     }
 
+    private void spawnSlow() {
+        Random rnd = new Random();
+        int low = 1;
+        int high = 1000;
+        int result = rnd.nextInt(high-low);
+        if(result < 2) {
+            SpeedDown speedPowerDown = new SpeedDown();
+            if (Globals.getInstance().display.spawnCheck(speedPowerDown.getClass())) {
+                speedPowerDown.destroy();
+            }
+        }
+    }
 
     private void checkCollisions() {
         List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
