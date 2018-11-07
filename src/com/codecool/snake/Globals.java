@@ -19,6 +19,16 @@ public class Globals {
     private Resources resources;
     private int gameScore = 0;
 
+    public void setMultiplier(int multiplier) {
+        this.multiplier = multiplier;
+    }
+
+    public int getMultiplier() {
+        return multiplier;
+    }
+
+    private int multiplier = 1;
+
     public int getGameScore() {
         return gameScore;
     }
@@ -43,7 +53,7 @@ public class Globals {
         resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("Health", new Image("heart.png"));
-
+        resources.addImage("SpeedDown", new Image("stop.png"));
         resources.addImage("SpeedUp", new Image("speed_up.png"));
     }
 

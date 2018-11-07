@@ -67,6 +67,12 @@ public class Snake implements Animatable {
         speed += numSpeed;
     }
 
+    public void slowSpeed(int numSpeed){
+        if(speed > 1){
+            speed -= numSpeed;
+        }
+    }
+
     public static void setSpeed(float speed) {
         Snake.speed = speed;
     }
