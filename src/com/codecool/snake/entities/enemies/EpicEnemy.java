@@ -23,7 +23,11 @@ public class EpicEnemy extends Enemy implements Animatable, Interactable {
         setImage(Globals.getInstance().getImage("EpicEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setDirection();
+    }
 
+
+    private void setDirection() {
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
@@ -34,11 +38,7 @@ public class EpicEnemy extends Enemy implements Animatable, Interactable {
     @Override
     public void step() {
         if (isOutOfBounds()) {
-            double direction = rnd.nextDouble() * 360;
-            setRotate(direction);
-
-            int speed = 1;
-            heading = Utils.directionToVector(direction, speed);
+            setDirection();
             //destroy();
         }
         setX(getX() + heading.getX());

@@ -50,10 +50,9 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(3);
         Snake.setSpeed(2);
         Globals.getInstance().display.frameFinished();
-        spawnEnemies(4);
+        spawnEnemies(3);
         spawnPowerUps(4);
         spawnSpeedUps(1);
 
