@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SpeedDown;
@@ -74,7 +75,12 @@ public class GameLoop {
         int high = 1000;
         int result = rnd.nextInt(high-low);
         if(result < 3) {
-            new SimpleEnemy();
+            Enemy enemy = new SimpleEnemy();
+            while (checkCollisionOnSpawn(enemy)) {
+                enemy.destroy();
+                enemy = new SimpleEnemy();
+            }
+
         }
     }
 
@@ -89,6 +95,18 @@ public class GameLoop {
                 speedPowerDown.destroy();
             }
         }
+    }
+    public boolean checkCollisionOnSpawn(GameEntity entity) {
+        List<GameEntity> gameObjs2 = Globals.getInstance().display.getObjectList();
+        for (int idxToCheck = 0; idxToCheck < gameObjs2.size(); ++idxToCheck) {
+            GameEntity objToCheck = gameObjs2.get(idxToCheck);
+            if (objToCheck instanceof Interactable) {
+                if (objToCheck.getBoundsInParent().intersects(entity.getBoundsInParent())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void checkCollisions() {
