@@ -7,6 +7,7 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 
+import com.codecool.snake.entities.powerups.SpeedDown;
 import com.codecool.snake.entities.powerups.SpeedUp;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
@@ -48,11 +49,21 @@ public class SnakeHead extends GameEntity implements Interactable {
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
             snake.addPart(4);
-            Globals.getInstance().setGameScore(Globals.getInstance().getGameScore() + 1);
+            Globals.getInstance().setGameScore(Globals.getInstance().getGameScore() + (1 * Globals.getInstance().getMultiplier()));
         }
         if(entity instanceof SpeedUp){
             System.out.println(getMessage());
             snake.addSpeed(1);
+            Globals.getInstance().setMultiplier(Globals.getInstance().getMultiplier()+1);
+
+        }
+        if(entity instanceof SpeedDown){
+            System.out.println(getMessage());
+            snake.slowSpeed(1);
+            if (Globals.getInstance().getMultiplier() > 1){
+            Globals.getInstance().setMultiplier(Globals.getInstance().getMultiplier()-1);
+            }
+
         }
     }
 
