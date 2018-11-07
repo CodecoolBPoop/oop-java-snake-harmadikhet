@@ -5,14 +5,21 @@ import com.codecool.snake.Globals;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.SpeedDown;
+import com.codecool.snake.entities.powerups.SpeedUp;
 import com.sun.javafx.geom.Vec2d;
 
 
-public class SnakeBody extends GameEntity {
+public class SnakeBody extends GameEntity implements Interactable {
     private Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
+    private Snake snake;
 
-    public SnakeBody(Vec2d coord) {
+    public SnakeBody(Snake snake, Vec2d coord) {
+        this.snake = snake;
         setImage(Globals.getInstance().getImage("SnakeBody"));
         setX(coord.x);
         setY(coord.y);
@@ -28,5 +35,18 @@ public class SnakeBody extends GameEntity {
         setX(currentPos.x);
         setY(currentPos.y);
         history.add(pos); // add the parent's current position to the beginning of the history
+    }
+
+    @Override
+    public void apply(GameEntity entity) {
+        if(entity instanceof Enemy){
+            System.out.println(getMessage());
+            snake.changeHealth(((Enemy) entity).getDamage());
+        }
+    }
+
+    @Override
+    public String getMessage() {
+        return "IMMA SNAEK BODI! SPITTIN' MAH WENOM! SPITJU-SPITJU!";
     }
 }

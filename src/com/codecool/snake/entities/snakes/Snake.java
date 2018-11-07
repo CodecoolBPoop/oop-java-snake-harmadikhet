@@ -57,7 +57,7 @@ public class Snake implements Animatable {
         Vec2d position = parent.getPosition();
 
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newBodyPart = new SnakeBody(position);
+            SnakeBody newBodyPart = new SnakeBody(this, position);
             body.add(newBodyPart);
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
