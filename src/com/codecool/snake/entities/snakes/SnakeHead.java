@@ -6,6 +6,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.projectile.Laser;
 
 import com.codecool.snake.entities.powerups.SpeedDown;
 import com.codecool.snake.entities.powerups.SpeedUp;
@@ -23,7 +24,11 @@ public class SnakeHead extends GameEntity implements Interactable {
         setPosition(position);
     }
 
-    public void updateRotation(SnakeControl turnDirection, float speed) {
+    public static float getTurnRate() {
+        return turnRate;
+    }
+
+    public void controlSnake(SnakeControl turnDirection, float speed) {
         double headRotation = getRotate();
 
         if (turnDirection.equals(SnakeControl.TURN_LEFT)) {
@@ -32,6 +37,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         if (turnDirection.equals(SnakeControl.TURN_RIGHT)) {
             headRotation = headRotation + turnRate;
         }
+        if (turnDirection.equals(SnakeControl.SHOOT)){
+            new Laser(headRotation);
+        }
+
 
         // set rotation and position
         setRotate(headRotation);
@@ -39,6 +48,8 @@ public class SnakeHead extends GameEntity implements Interactable {
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
+
+
 
     @Override
     public void apply(GameEntity entity) {
