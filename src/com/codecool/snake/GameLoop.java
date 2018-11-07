@@ -35,7 +35,7 @@ public class GameLoop {
                     ((Animatable) gameObject).step();
                 }
             }
-            checkCollisions();
+            handleCollision();
             spawnSpeed();
             spawnSimple();
             spawnEnemy();
@@ -96,7 +96,7 @@ public class GameLoop {
             }
         }
     }
-    public boolean checkCollisionOnSpawn(GameEntity entity) {
+    public static boolean checkCollisionOnSpawn(GameEntity entity) {
         List<GameEntity> gameObjs2 = Globals.getInstance().display.getObjectList();
         for (int idxToCheck = 0; idxToCheck < gameObjs2.size(); ++idxToCheck) {
             GameEntity objToCheck = gameObjs2.get(idxToCheck);
@@ -109,7 +109,7 @@ public class GameLoop {
         return false;
     }
 
-    private void checkCollisions() {
+    private void handleCollision() {
         List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
         for (int idxToCheck = 0; idxToCheck < gameObjs.size(); ++idxToCheck) {
             GameEntity objToCheck = gameObjs.get(idxToCheck);

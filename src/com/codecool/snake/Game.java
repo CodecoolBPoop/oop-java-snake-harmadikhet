@@ -74,7 +74,13 @@ public class Game extends Pane {
     }
 
     private void spawnEnemies(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+        for(int i = 0; i < numberOfEnemies; ++i) {
+            SimpleEnemy enemy = new SimpleEnemy();
+            while (GameLoop.checkCollisionOnSpawn(enemy)) {
+                enemy.destroy();
+                enemy = new SimpleEnemy();
+            }
+        }
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
