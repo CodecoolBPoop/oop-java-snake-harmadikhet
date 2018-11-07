@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.enemies.EpicEnemy;
 import com.codecool.snake.entities.Health;
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.LegendaryEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SpeedUp;
@@ -77,6 +78,8 @@ public class Game extends Pane {
     private void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
         for(int i = 0; i < numberOfEnemies; ++i) new EpicEnemy();
+        for(int i = 0; i < numberOfEnemies; ++i) new LegendaryEnemy();
+
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
