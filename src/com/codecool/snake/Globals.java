@@ -55,6 +55,7 @@ public class Globals {
         resources.addImage("Health", new Image("heart.png"));
         resources.addImage("SpeedDown", new Image("stop.png"));
         resources.addImage("SpeedUp", new Image("speed_up.png"));
+        resources.addImage("Laser", new Image("laser.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }

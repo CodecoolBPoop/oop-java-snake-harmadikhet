@@ -8,6 +8,7 @@ import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SpeedDown;
 import com.codecool.snake.entities.powerups.SpeedUp;
+import com.codecool.snake.entities.projectile.Laser;
 import com.codecool.snake.entities.snakes.Snake;
 
 import java.util.List;
@@ -58,6 +59,7 @@ public class GameLoop {
             }
         }
     }
+
 
     private void spawnSimple() {
         Random rnd = new Random();
