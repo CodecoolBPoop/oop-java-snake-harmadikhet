@@ -1,7 +1,9 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.EpicEnemy;
 import com.codecool.snake.entities.Health;
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.LegendaryEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SpeedUp;
@@ -51,7 +53,7 @@ public class Game extends Pane {
         spawnSnake();
         Snake.setSpeed(2);
         Globals.getInstance().display.frameFinished();
-        spawnEnemies(4);
+        spawnEnemies(3);
         spawnPowerUps(4);
         spawnSpeedUps(1);
 
@@ -75,6 +77,8 @@ public class Game extends Pane {
 
     private void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) {
+            new EpicEnemy();
+            new LegendaryEnemy();
             SimpleEnemy enemy = new SimpleEnemy();
             while (GameLoop.checkCollisionOnSpawn(enemy)) {
                 enemy.destroy();
