@@ -10,6 +10,7 @@ import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,7 +18,19 @@ import java.util.List;
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+    private static Health h1;
+    private static Health h2;
+    private static Health h3;
 
+    public static void destroyHeart(){
+        if (Snake.getHealth() == 20) {
+            h3.destroy();
+        } else if (Snake.getHealth() == 10) {
+            h2.destroy();
+        } else if (Snake.getHealth() == 0){
+            h1.destroy();
+        }
+    }
 
     public Game() {
         Globals.getInstance().game = this;
@@ -31,7 +44,7 @@ public class Game extends Pane {
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
-        displayHealth(3);
+        spawnHearts();
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -56,11 +69,10 @@ public class Game extends Pane {
         for (int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
-    private void displayHealth(int lives) {
-        new Health(20, 20);
-        new Health(80, 20);
-        new Health(140, 20);
-
+    private void spawnHearts(){
+        h1 = new Health(20, 20);
+        h2 = new Health(80, 20);
+        h3 = new Health(140, 20);
     }
 
     private void setupInputHandling() {

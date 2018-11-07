@@ -30,6 +30,7 @@ public class GameLoop {
                 }
             }
             checkCollisions();
+            Game.destroyHeart();
         }
 
         Globals.getInstance().display.frameFinished();
