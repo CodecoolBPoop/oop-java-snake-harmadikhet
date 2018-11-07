@@ -41,7 +41,7 @@ public class SnakeBody extends GameEntity implements Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof Enemy){
             System.out.println(getMessage());
-            //snake.changeHealth(((Enemy) entity).getDamage());
+            snake.changeHealth(((Enemy) entity).getDamage());
         }
     }
 
