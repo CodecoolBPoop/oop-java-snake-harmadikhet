@@ -4,6 +4,7 @@ import com.codecool.snake.entities.GameEntity;
 
 import java.util.List;
 
+import com.codecool.snake.entities.snakes.Snake;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -22,6 +23,7 @@ public class Display {
         restartButton.setOnAction((event) -> {
             System.out.println("Restart...");
             clear();
+            Snake.setHealth(30);
             Globals.getInstance().display = new Display(displayPane);
             Globals.getInstance().stopGame();
             Globals.getInstance().game.init();

@@ -18,6 +18,10 @@ public class Snake implements Animatable {
         return health;
     }
 
+    public static void setHealth(int health) {
+        Snake.health = health;
+    }
+
     private static int health = 30;
 
     private SnakeHead head;
