@@ -49,7 +49,10 @@ public class GameLoop {
         int high = 1000;
         int result = rnd.nextInt(high-low);
         if(result < 2) {
-            new SpeedUp();
+            SpeedUp speedPowerUp = new SpeedUp();
+            if (Globals.getInstance().display.spawnCheck(speedPowerUp.getClass())) {
+                speedPowerUp.destroy();
+            }
         }
     }
 

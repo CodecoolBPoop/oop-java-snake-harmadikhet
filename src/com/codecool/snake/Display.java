@@ -51,6 +51,10 @@ public class Display {
         gameObjects.doPendingModifications();
     }
 
+    public boolean spawnCheck(Class objectClass) {
+        return gameObjects.isThereAPowerUp(objectClass);
+    }
+
     public void updateSnakeHeadDrawPosition(GameEntity snakeHead) {
         displayPane.getChildren().remove(snakeHead);
         displayPane.getChildren().add(snakeHead);

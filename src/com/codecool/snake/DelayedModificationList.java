@@ -1,5 +1,7 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.powerups.SimplePowerUp;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,6 +50,13 @@ public class DelayedModificationList<T> {
 
         objects.removeAll(oldObjects);
         oldObjects.clear();
+    }
+
+    public boolean isThereAPowerUp(Class objectClass) {
+        for(Object object : objects)
+            if(objectClass.isInstance(object))
+                return true;
+        return false;
     }
 
     public T getLast() {
