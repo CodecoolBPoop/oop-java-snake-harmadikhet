@@ -37,6 +37,7 @@ public class GameLoop {
             spawnSpeed();
             spawnSimple();
             spawnEnemy();
+            Game.destroyHeart();
         }
 
         Globals.getInstance().display.frameFinished();
@@ -91,8 +92,3 @@ public class GameLoop {
         }
     }
 }
-
-
-
-
-
