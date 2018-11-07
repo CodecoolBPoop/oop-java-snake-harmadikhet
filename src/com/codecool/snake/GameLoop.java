@@ -3,9 +3,13 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.SpeedUp;
 import com.codecool.snake.entities.snakes.Snake;
 
 import java.util.List;
+import java.util.Random;
 
 public class GameLoop {
     private Snake snake;
@@ -30,10 +34,45 @@ public class GameLoop {
                 }
             }
             checkCollisions();
+            spawnSpeed();
+            spawnSimple();
+            spawnEnemy();
+            Game.destroyHeart();
         }
 
         Globals.getInstance().display.frameFinished();
     }
+
+    private void spawnSpeed() {
+        Random rnd = new Random();
+        int low = 1;
+        int high = 1000;
+        int result = rnd.nextInt(high-low);
+        if(result < 2) {
+            new SpeedUp();
+        }
+    }
+
+    private void spawnSimple() {
+        Random rnd = new Random();
+        int low = 1;
+        int high = 1000;
+        int result = rnd.nextInt(high-low);
+        if(result < 4) {
+            new SimplePowerUp();
+        }
+    }
+
+    private void spawnEnemy() {
+        Random rnd = new Random();
+        int low = 1;
+        int high = 1000;
+        int result = rnd.nextInt(high-low);
+        if(result < 3) {
+            new SimpleEnemy();
+        }
+    }
+
 
     private void checkCollisions() {
         List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();

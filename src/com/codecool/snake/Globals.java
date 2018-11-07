@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.powerups.SpeedUp;
 import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -16,7 +17,15 @@ public class Globals {
 
     private GameLoop gameLoop;
     private Resources resources;
+    private int gameScore = 0;
 
+    public int getGameScore() {
+        return gameScore;
+    }
+
+    public void setGameScore(int gameScore) {
+        this.gameScore = gameScore;
+    }
 
     public static Globals getInstance() {
         if(instance == null) instance = new Globals();
@@ -34,6 +43,9 @@ public class Globals {
         resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
         resources.addImage("EpicEnemy", new Image("bloody_knife.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
+        resources.addImage("Health", new Image("heart.png"));
+
+        resources.addImage("SpeedUp", new Image("speed_up.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
