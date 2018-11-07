@@ -3,6 +3,7 @@ package com.codecool.snake.entities.powerups;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.projectile.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
@@ -21,6 +22,9 @@ public class SimplePowerUp extends GameEntity implements Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
+            destroy();
+        }
+        if(entity instanceof Laser){
             destroy();
         }
     }

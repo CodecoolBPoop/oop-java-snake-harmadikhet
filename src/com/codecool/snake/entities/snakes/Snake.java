@@ -48,7 +48,9 @@ public class Snake implements Animatable {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.SHIFT)) turnDir = SnakeControl.SHOOT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.SHIFT)){
+            turnDir = SnakeControl.SHOOT;
+            InputHandler.getInstance().setKeyReleased(KeyCode.SHIFT);}
         return turnDir;
     }
 
