@@ -100,9 +100,9 @@ public class Game extends Pane {
 
 
     private void spawnHearts(){
-        h1 = new Health(20, 20);
-        h2 = new Health(80, 20);
-        h3 = new Health(140, 20);
+        h1 = new Health(20, 40);
+        h2 = new Health(80, 40);
+        h3 = new Health(140, 40);
     }
 
     private void setupInputHandling() {

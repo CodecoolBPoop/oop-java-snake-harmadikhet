@@ -17,7 +17,7 @@ import javafx.geometry.Point2D;
 public class SnakeHead extends GameEntity implements Interactable {
     private static final float turnRate = 2;
     private Snake snake;
-    int laserSpeedMultiplier = 1;
+    int laserSpeedMultiplier = 2;
 
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;

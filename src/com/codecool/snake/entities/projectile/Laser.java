@@ -19,7 +19,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     public double laserrotation;
 
     public Laser(double speed, double headrotation){
-        this.speed = speed;
+        this.speed = speed / 2;
         setImage(Globals.getInstance().getImage("Laser"));
         setPosition(Globals.getInstance().display.getObjectList().get(0).getPosition());
         laserrotation = headrotation;
