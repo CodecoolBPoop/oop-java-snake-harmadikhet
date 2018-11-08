@@ -5,6 +5,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.EpicEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.snakes.Snake;
@@ -37,7 +38,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(GameEntity entity) {
-        if(entity instanceof SimpleEnemy){
+        if(entity instanceof Enemy){
             System.out.println(getMessage());
             destroy();
         }
