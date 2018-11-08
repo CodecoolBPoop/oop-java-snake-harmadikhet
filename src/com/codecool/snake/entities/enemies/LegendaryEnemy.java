@@ -19,13 +19,9 @@ public class LegendaryEnemy extends Enemy implements Animatable, Interactable {
 
     private static Random rnd = new Random();
 
-    private double snakeHeadX = Globals.getInstance().display.getObjectList().get(0).getX();
-    private double snakeHeadY = Globals.getInstance().display.getObjectList().get(0).getY();
-
     private Point2D heading;
     private int direction = 90;
     private double speed = 3.5;
-    private int forward = 90;
 
     public LegendaryEnemy() {
         super(10);
