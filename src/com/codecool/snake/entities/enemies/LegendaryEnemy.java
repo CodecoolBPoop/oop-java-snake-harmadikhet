@@ -25,6 +25,7 @@ public class LegendaryEnemy extends Enemy implements Animatable, Interactable {
     private Point2D heading;
     private int direction = 90;
     private double speed = 3.5;
+    private int forward = 90;
 
     public LegendaryEnemy() {
         super(10);
@@ -33,15 +34,19 @@ public class LegendaryEnemy extends Enemy implements Animatable, Interactable {
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
         heading = Utils.directionToVector(direction, speed);
+        setScaleX(-1);
     }
 
     @Override
     public void step() {
         if (getX() > Globals.WINDOW_WIDTH) {
+            setScaleX(1);
             heading = Utils.directionToVector(-direction, speed);
         } else if (getX() < 0) {
+            setScaleX(-1);
             heading = Utils.directionToVector(direction, speed);
         }
+
         setX(getX() + heading.getX());
     }
 
