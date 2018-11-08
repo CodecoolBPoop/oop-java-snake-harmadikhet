@@ -4,11 +4,12 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.entities.enemies.EpicEnemy;
+import com.codecool.snake.entities.enemies.LegendaryEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SpeedDown;
 import com.codecool.snake.entities.powerups.SpeedUp;
-import com.codecool.snake.entities.projectile.Laser;
 import com.codecool.snake.entities.snakes.Snake;
 
 import java.util.List;
@@ -39,7 +40,9 @@ public class GameLoop {
             handleCollision();
             spawnSpeed();
             spawnSimple();
-            spawnEnemy();
+            spawnSimpleEnemy();
+            spawnEpicEnemy();
+            spawnLegendaryEnemy();
             spawnSlow();
             Game.destroyHeart();
         }
@@ -71,7 +74,7 @@ public class GameLoop {
         }
     }
 
-    private void spawnEnemy() {
+    private void spawnSimpleEnemy() {
         Random rnd = new Random();
         int low = 1;
         int high = 1000;
@@ -82,8 +85,38 @@ public class GameLoop {
                 enemy.destroy();
                 enemy = new SimpleEnemy();
             }
-
         }
+
+    }
+
+    private void spawnEpicEnemy() {
+        Random rnd = new Random();
+        int low = 1;
+        int high = 3000;
+        int result = rnd.nextInt(high-low);
+        if(result < 3) {
+            Enemy enemy = new EpicEnemy();
+            while (checkCollisionOnSpawn(enemy)) {
+                enemy.destroy();
+                enemy = new EpicEnemy();
+            }
+        }
+
+    }
+
+    private void spawnLegendaryEnemy() {
+        Random rnd = new Random();
+        int low = 1;
+        int high = 6000;
+        int result = rnd.nextInt(high-low);
+        if(result < 3) {
+            Enemy enemy = new LegendaryEnemy();
+            while (checkCollisionOnSpawn(enemy)) {
+                enemy.destroy();
+                enemy = new LegendaryEnemy();
+            }
+        }
+
     }
 
     private void spawnSlow() {
