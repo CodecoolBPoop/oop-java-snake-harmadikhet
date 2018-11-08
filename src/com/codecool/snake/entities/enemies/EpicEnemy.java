@@ -5,6 +5,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.snakes.SnakeBody;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 
@@ -48,6 +49,10 @@ public class EpicEnemy extends Enemy implements Animatable, Interactable {
     @Override
     public void apply(GameEntity entity) {
         if (entity instanceof SnakeHead) {
+            System.out.println(getMessage());
+            destroy();
+        }
+        if (entity instanceof SnakeBody) {
             System.out.println(getMessage());
             destroy();
         }
