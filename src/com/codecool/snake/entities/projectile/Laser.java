@@ -5,6 +5,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.EpicEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.snakes.Snake;
@@ -14,10 +15,11 @@ import javafx.geometry.Point2D;
 
 
 public class Laser extends GameEntity implements Animatable, Interactable {
-    double speed = 4;
+    double speed;
     public double laserrotation;
 
-    public Laser(double headrotation){
+    public Laser(double speed, double headrotation){
+        this.speed = speed;
         setImage(Globals.getInstance().getImage("Laser"));
         setPosition(Globals.getInstance().display.getObjectList().get(0).getPosition());
         laserrotation = headrotation;
@@ -37,7 +39,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(GameEntity entity) {
-        if(entity instanceof SimpleEnemy){
+        if(entity instanceof Enemy){
             System.out.println(getMessage());
             destroy();
         }

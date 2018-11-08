@@ -17,6 +17,7 @@ import javafx.geometry.Point2D;
 public class SnakeHead extends GameEntity implements Interactable {
     private static final float turnRate = 2;
     private Snake snake;
+    int laserSpeedMultiplier = 1;
 
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;
@@ -38,7 +39,7 @@ public class SnakeHead extends GameEntity implements Interactable {
             headRotation = headRotation + turnRate;
         }
         if (turnDirection.equals(SnakeControl.SHOOT)){
-            new Laser(headRotation);
+            new Laser(5 * laserSpeedMultiplier,headRotation);
         }
 
 
@@ -65,12 +66,16 @@ public class SnakeHead extends GameEntity implements Interactable {
         if (entity instanceof SpeedUp) {
             System.out.println(getMessage());
             snake.addSpeed(1);
+            laserSpeedMultiplier++;
             Globals.getInstance().setMultiplier(Globals.getInstance().getMultiplier()+1);
 
         }
         if(entity instanceof SpeedDown){
             System.out.println(getMessage());
             snake.slowSpeed(1);
+            if (laserSpeedMultiplier > 1) {
+                laserSpeedMultiplier--;
+            }
             if (Globals.getInstance().getMultiplier() > 1){
             Globals.getInstance().setMultiplier(Globals.getInstance().getMultiplier()-1);
             }

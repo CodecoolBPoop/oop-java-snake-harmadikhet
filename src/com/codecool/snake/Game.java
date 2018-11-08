@@ -53,8 +53,8 @@ public class Game extends Pane {
         spawnSnake();
         Snake.setSpeed(2);
         Globals.getInstance().display.frameFinished();
-        spawnEnemies(3);
-        spawnPowerUps(4);
+        spawnEnemies(1);
+        spawnPowerUps(2);
         spawnSpeedUps(1);
 
         spawnHearts();

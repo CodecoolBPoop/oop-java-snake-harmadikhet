@@ -5,6 +5,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.projectile.Laser;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeBody;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -52,6 +53,9 @@ public class LegendaryEnemy extends Enemy implements Animatable, Interactable {
         }
         if (entity instanceof SnakeBody) {
             System.out.println(getMessage());
+            destroy();
+        }
+        if (entity instanceof Laser){
             destroy();
         }
     }
