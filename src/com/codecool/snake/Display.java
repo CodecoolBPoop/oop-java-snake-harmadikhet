@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 
+import java.awt.*;
 import java.util.List;
 
 import com.codecool.snake.entities.snakes.Snake;
@@ -11,6 +12,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+
+import javax.swing.text.html.ImageView;
 
 
 public class Display {
